@@ -17,5 +17,6 @@ WORKDIR /app
 
 RUN apk add --no-cache icu-libs krb5-libs
 
-COPY --from=build-env /app/src/OpenFTTH.AddressPostgisProjector/out .
+COPY --from=build-env --chown=app:app /app/src/OpenFTTH.AddressPostgisProjector/out .
+USER app
 ENTRYPOINT ["dotnet", "OpenFTTH.AddressPostgisProjector.dll"]
